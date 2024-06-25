@@ -15,7 +15,7 @@
   <test_depend>python3-pytest</test_depend>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
-  <buildtool_depend>ament_python</buildtool_depend>
+<!--   <buildtool_depend>ament_python</buildtool_depend> -->
 
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>
