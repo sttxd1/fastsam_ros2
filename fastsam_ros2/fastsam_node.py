@@ -128,37 +128,37 @@ class FastSAMNode(Node):
             better_quality=self.better_quality,
         )
 
-        # # Convert the annotation to a binary mask
-        # binary_mask = (ann[0] > 0).astype(np.uint8) * 255  # Assuming ann[0] is the mask
-        # binary_mask_pil = PilImage.fromarray(binary_mask)
+        # Convert the annotation to a binary mask
+        binary_mask = (ann[0] > 0).astype(np.uint8) * 255  # Assuming ann[0] is the mask
+        binary_mask_pil = PilImage.fromarray(binary_mask)
 
 
-        # # Convert PIL image to ROS Image message manually (binary image)
-        # binary_mask_np = np.array(binary_mask_pil)
-        # img_msg = Image()
-        # img_msg.header.stamp = self.get_clock().now().to_msg()
-        # img_msg.header.frame_id = msg.header.frame_id
-        # img_msg.height = binary_mask_np.shape[0]
-        # img_msg.width = binary_mask_np.shape[1]
-        # img_msg.encoding = "mono8"
-        # img_msg.is_bigendian = False
-        # img_msg.step = binary_mask_np.shape[1]
-        # img_msg.data = binary_mask_np.tobytes()
+        # Convert PIL image to ROS Image message manually (binary image)
+        binary_mask_np = np.array(binary_mask_pil)
+        img_msg = Image()
+        img_msg.header.stamp = self.get_clock().now().to_msg()
+        img_msg.header.frame_id = msg.header.frame_id
+        img_msg.height = binary_mask_np.shape[0]
+        img_msg.width = binary_mask_np.shape[1]
+        img_msg.encoding = "mono8"
+        img_msg.is_bigendian = False
+        img_msg.step = binary_mask_np.shape[1]
+        img_msg.data = binary_mask_np.tobytes()
 
 
         # img_msg = self.bridge.cv2_to_imgmsg(result, encoding="bgr8")
 
         # Convert PIL image to ROS Image message manually (rgb image)
-        result_np = np.array(result)
-        img_msg = Image()
-        img_msg.header.stamp = self.get_clock().now().to_msg()
-        img_msg.header.frame_id = msg.header.frame_id
-        img_msg.height = result_np.shape[0]
-        img_msg.width = result_np.shape[1]
-        img_msg.encoding = "bgr8"
-        img_msg.is_bigendian = False
-        img_msg.step = result_np.shape[1] * 3
-        img_msg.data = result_np.tobytes()
+        # result_np = np.array(result)
+        # img_msg = Image()
+        # img_msg.header.stamp = self.get_clock().now().to_msg()
+        # img_msg.header.frame_id = msg.header.frame_id
+        # img_msg.height = result_np.shape[0]
+        # img_msg.width = result_np.shape[1]
+        # img_msg.encoding = "bgr8"
+        # img_msg.is_bigendian = False
+        # img_msg.step = result_np.shape[1] * 3
+        # img_msg.data = result_np.tobytes()
 
         self.publisher.publish(img_msg)
         self.get_logger().info('Output published')
