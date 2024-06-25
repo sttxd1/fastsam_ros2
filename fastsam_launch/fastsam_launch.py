@@ -9,7 +9,7 @@ def generate_launch_description():
     model_path = LaunchConfiguration("model_path")
     model_path_cmd = DeclareLaunchArgument(
         "model_path",
-        default_value="./weights/FastSAM-x.pt",
+        default_value="/home/st/scooter_ws/segmentation/FastSAM/weights/FastSAM-x.pt",
         description="Model path"
     )
 
@@ -73,7 +73,7 @@ def generate_launch_description():
     # randomcolor = LaunchConfiguration("randomcolor")
     # randomcolor_cmd = DeclareLaunchArgument(
     #     "randomcolor",
-    #     default_value="True",
+    #     default_value="False",
     #     description="Mask random color"
     # )
 
@@ -94,7 +94,7 @@ def generate_launch_description():
     # box_prompt = LaunchConfiguration("box_prompt")
     # box_prompt_cmd = DeclareLaunchArgument(
     #     "box_prompt",
-    #     default_value="[[0,0,0,0]]",
+    #     default_value="[[327,240,200,240]]",
     #     description="Box prompt for FastSAM"
     # )
 

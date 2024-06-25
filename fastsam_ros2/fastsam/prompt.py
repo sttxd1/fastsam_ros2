@@ -97,7 +97,7 @@ class FastSAMPrompt:
              bboxes=None,
              points=None,
              point_label=None,
-             mask_random_color=True,
+             mask_random_color=False,
              better_quality=True,
              retina=False,
              withContours=True) -> np.ndarray:
@@ -377,11 +377,14 @@ class FastSAMPrompt:
 
     def box_prompt(self, bbox=None, bboxes=None):
         if self.results == None:
+            print('result is none')
             return []
         assert bbox or bboxes
         if bboxes is None:
             bboxes = [bbox]
         max_iou_index = []
+        max_iou_value = -1
+
         for bbox in bboxes:
             assert (bbox[2] != 0 and bbox[3] != 0)
             masks = self.results[0].masks.data
@@ -408,9 +411,15 @@ class FastSAMPrompt:
 
             union = bbox_area + orig_masks_area - masks_area
             IoUs = masks_area / union
+
+            #get max iou value
+            max_iou = torch.max(IoUs).item()
+            max_iou_value = max(max_iou_value, max_iou)
+
             max_iou_index.append(int(torch.argmax(IoUs)))
         max_iou_index = list(set(max_iou_index))
-        return np.array(masks[max_iou_index].cpu().numpy())
+        # print('max_iou_index:',max_iou_index[0])
+        return np.array(masks[max_iou_index].cpu().numpy()), max_iou_value
 
     def point_prompt(self, points, pointlabel):  # numpy 
         if self.results == None:

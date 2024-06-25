@@ -11,6 +11,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', ['fastsam_launch/fastsam_launch.py']),
+        ('share/' + package_name + '/launch', ['fastsam_launch/fastsam_trt_launch.py']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -21,7 +22,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'fastsam_node = fastsam_ros2.fastsam_node:main'
+            'fastsam_node = fastsam_ros2.fastsam_node:main',
+            'fastsam_node_trt = fastsam_ros2.fastsam_node_trt:main',
         ],
     },
 )

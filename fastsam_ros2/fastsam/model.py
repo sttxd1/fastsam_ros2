@@ -39,6 +39,8 @@ class FastSAM(YOLO):
     #     if not hasattr(self.model, 'args'):
     #         self.model.args = DEFAULT_CFG  # Assign default config if args are not available
 
+    
+
     @smart_inference_mode()
     def predict(self, source=None, stream=False, **kwargs):
         """
@@ -70,9 +72,9 @@ class FastSAM(YOLO):
         except Exception as e:
             return None
 
-    def train(self, **kwargs):
-        """Function trains models but raises an error as FastSAM models do not support training."""
-        raise NotImplementedError("Currently, the training codes are on the way.")
+    # def train(self, **kwargs):
+    #     """Function trains models but raises an error as FastSAM models do not support training."""
+    #     raise NotImplementedError("Currently, the training codes are on the way.")
 
     def val(self, **kwargs):
         """Run validation given dataset."""
@@ -104,7 +106,7 @@ class FastSAM(YOLO):
             args.batch = 1  # default to 1 if not modified
         return Exporter(overrides=args)(model=self.model)
 
-    def info(self, detailed=False, verbose=True):
+    def info(self, detailed=True, verbose=True):
         """
         Logs model info.
 
