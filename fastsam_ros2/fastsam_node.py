@@ -2,7 +2,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
 from std_msgs.msg import String
-from cv_bridge import CvBridge
+# from cv_bridge import CvBridge
 # from fastsam import FastSAM, FastSAMPrompt 
 from .fastsam.model import FastSAM
 from .fastsam.prompt import FastSAMPrompt
