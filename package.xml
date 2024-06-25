@@ -25,8 +25,8 @@
   <!-- <depend>fastsam</depend> -->
   <depend>launch</depend>
   <depend>launch_ros</depend>
-  <depend>pycuda</depend>
-  <depend>tensorrt</depend>
+<!--   <depend>pycuda</depend>
+  <depend>tensorrt</depend> -->
 
   <exec_depend>python3</exec_depend>
   <exec_depend>python3-numpy</exec_depend>
