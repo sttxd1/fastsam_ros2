@@ -20,7 +20,7 @@
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>
   <depend>std_msgs</depend>
-  <depend>cv_bridge</depend>
+<!--   <depend>cv_bridge</depend> -->
 <!--   <depend>torch</depend> -->
   <!-- <depend>fastsam</depend> -->
   <depend>launch</depend>
