@@ -119,14 +119,14 @@ class FastSAMNode(Node):
         ## everything
         # ann = prompt_process.everything_prompt()
 
-        result = prompt_process.plot_to_result(
-            annotations=ann,
-            bboxes=bboxes,
-            points=points,
-            point_label=point_label,
-            withContours=self.withContours,
-            better_quality=self.better_quality,
-        )
+        # result = prompt_process.plot_to_result(
+        #     annotations=ann,
+        #     bboxes=bboxes,
+        #     points=points,
+        #     point_label=point_label,
+        #     withContours=self.withContours,
+        #     better_quality=self.better_quality,
+        # )
 
         # Convert the annotation to a binary mask
         binary_mask = (ann[0] > 0).astype(np.uint8) * 255  # Assuming ann[0] is the mask
