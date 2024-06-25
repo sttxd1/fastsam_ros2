@@ -58,7 +58,7 @@ class FastSAMNode(Node):
             self.segment_callback,
             20)
         self.publisher = self.create_publisher(Image, self.output, 20)
-        self.bridge = CvBridge()
+        # self.bridge = CvBridge()
         self.previous_anns = deque(maxlen=5)
 
     def segment_callback(self, msg):
